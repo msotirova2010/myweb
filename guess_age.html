@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Find my age</title>
+<script>
+function checkForm() {
+  fname = document.getElementById('fname')
+  if ( fname.value === '' ) {
+    alert("Please, enter your first name!")
+    fname.focus()
+    return false
+  }
+  lname = document.getElementById('lname')
+  if ( lname.value === '' ) {
+    alert("Please, enter your last name!")
+    lname.focus()
+    return false
+  }
+  bdate = document.getElementById('bdate')
+  if ( bdate.value === '' ) {
+    alert("Please, enter your birth date!")
+    bdate.focus()
+    return false
+  }
+
+  return true
+}
+function calcAge() {
+  bdate = new Date(document.getElementById('bdate').value)
+  fname = document.getElementById('fname').value
+  lname = document.getElementById('lname').value
+  today = new Date()
+  age = Math.floor((today - bdate) / (365.25 * 24 * 60 * 60 * 1000))
+  alert(fname + " " + lname + " you are " + age + " years old")
+}
+function formAction() {
+  if ( checkForm() ) calcAge()
+}
+</script>
+</head>
+<body>
+<h1>Find my age</h1>
+<p>Please, enter you first and last name and birth date and click on
+"Calculate" button to find your age.</p>
+<form action="javascript:formAction()">
+<label for="fname">First name:</label>
+<input id="fname" name="fname" placeholder="e.g. John" type="text"><br><br>
+<label for="lname">Last name:</label>
+<input id="lname" name="lname" placeholder="e.g. Smith" type="text"><br><br>
+<label for="bdate">Birth date:</label>
+<input id="bdate" name="bdate" type="datetime-local"><br><br>
+<input type="submit" value="Calculate">
+</form>
+</body>
+</html>
